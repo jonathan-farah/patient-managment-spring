@@ -17,8 +17,16 @@ public class ArrayController {
 		return returnVal;
 	}
 	@GetMapping("/eraseArray")
-		public String eraser() {
-			array.clear();
-			return "Array has been cleared"+ array;
-		}
+	public String eraser() {
+		array.clear();
+		return "Array has been cleared"+ array;
 	}
+	@GetMapping("/sumation")
+	public String addNum() {
+		int sum = 0;
+		for(int x: array) {
+			sum+=x;
+		}
+		return "The sum of all the numbers is "+sum;
+	}
+}
