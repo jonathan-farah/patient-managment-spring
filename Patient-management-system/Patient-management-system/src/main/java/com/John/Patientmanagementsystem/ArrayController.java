@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ArrayController {
 	private ArrayList<Integer> array = new ArrayList<Integer>();
+	@GetMapping("/")
+	public String welcome () {
+		return "Welcome to the Internet, have a look around";
+	}
 	@GetMapping("/addnum")
 	public String addNumber(@RequestParam(name = "number", required = false,
 	defaultValue = "0")int n) {
@@ -21,8 +25,8 @@ public class ArrayController {
 		array.clear();
 		return "Array has been cleared"+ array;
 	}
-	@GetMapping("/sumation")
-	public String addNum() {
+	@GetMapping("/summation")
+	public String addNumsInArray() {
 		int sum = 0;
 		for(int x: array) {
 			sum+=x;
