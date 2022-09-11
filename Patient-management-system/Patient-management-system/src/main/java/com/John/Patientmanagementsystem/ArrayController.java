@@ -1,36 +1,59 @@
 package com.John.Patientmanagementsystem;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ArrayController {
-	private ArrayList<Integer> array = new ArrayList<Integer>();
+	private ArrayList<Patient> array = new ArrayList<Patient>();
 	@GetMapping("/")
 	public String welcome () {
 		return "Welcome to the Internet, have a look around";
 	}
-	@GetMapping("/addnum")
-	public String addNumber(@RequestParam(name = "number", required = false,
-	defaultValue = "0")int n) {
-		array.add(n);
-		String returnVal = "";
-		returnVal += "succesfully added #: " + n +"\n array is "+ array;
-		return returnVal;
+	@GetMapping("/addPatient")
+	public String addPatient(@RequestParam(name = "age", required = true,
+	defaultValue = "0")String n, @RequestParam(name = "name", required = true)  
+	String name,@RequestParam(name = "StartDate", required = true)String sd,
+	@RequestParam(name = "EndDate", required = true )String ed) {
+		//check for valid age
+		int ageNumber;
+		 Date date1;
+		 Date date2;
+		try {
+			ageNumber = Integer.parseInt(n);
+		}
+		catch (Exception e) {
+			return "Invalid value for age";
+		}
+		if(ageNumber <= 0) {
+			return "Invalid value for age";
+		}
+		SimpleDateFormat sdfrmt = new SimpleDateFormat("MM/dd/yyyy");
+		sdfrmt.setLenient(false);
+		try {
+		     date1 = sdfrmt.parse(sd);
+		}
+		catch(Exception e) {
+			return "Invalid date format";
+		}
+		try {
+		     date2 = sdfrmt.parse(ed);
+		}
+		catch(Exception e) {
+			return "Invalid date format";
+		}
+		Patient p = new Patient(ageNumber,name,date1,date2);
+		array.add(p);
+		return "added patient: "+p.toString();
 	}
 	@GetMapping("/eraseArray")
 	public String eraser() {
 		array.clear();
 		return "Array has been cleared"+ array;
-	}
-	@GetMapping("/summation")
-	public String addNumsInArray() {
-		int sum = 0;
-		for(int x: array) {
-			sum+=x;
-		}
-		return "The sum of all the numbers is "+sum;
 	}
 }
