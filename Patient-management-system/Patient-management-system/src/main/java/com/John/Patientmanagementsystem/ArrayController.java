@@ -4,16 +4,18 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-@RestController
+@Controller
 public class ArrayController {
 	private ArrayList<Patient> array = new ArrayList<Patient>();
-	@GetMapping("/")
+	@GetMapping("/index")
 	public String welcome () {
-		return "Welcome to the Internet, have a look around";
+        return "Homepage";
 	}
 	@GetMapping("/addPatient")
 	public String addPatient(@RequestParam(name = "age", required = true,
