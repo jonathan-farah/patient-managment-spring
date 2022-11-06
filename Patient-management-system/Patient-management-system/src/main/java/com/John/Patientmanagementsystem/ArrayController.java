@@ -30,10 +30,10 @@ public class ArrayController {
 			ageNumber = Integer.parseInt(n);
 		}
 		catch (Exception e) {
-			return "Invalid value for age";
+			return "InvalidInputAge";
 		}
 		if(ageNumber <= 0) {
-			return "Invalid value for age";
+			return "InvalidInputAge";
 		}
 		SimpleDateFormat sdfrmt = new SimpleDateFormat("MM/dd/yyyy");
 		sdfrmt.setLenient(false);
@@ -41,17 +41,17 @@ public class ArrayController {
 		     date1 = sdfrmt.parse(sd);
 		}
 		catch(Exception e) {
-			return "Invalid date format";
+			return "InvalidInputDate";
 		}
 		try {
 		     date2 = sdfrmt.parse(ed);
 		}
 		catch(Exception e) {
-			return "Invalid date format";
+			return "InvalidInputDate";
 		}
 		Patient p = new Patient(ageNumber,name,date1,date2);
 		array.add(p);
-		return "added patient: "+p.toString();
+		return "addPatientSuccess";
 	}
 	@GetMapping("/eraseArray")
 	public String eraser() {
