@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class ArrayController {
 	private ArrayList<Patient> array = new ArrayList<Patient>();
 	@GetMapping("/index")
-	public String welcome () {
+	public String welcome (Model model) {
+		model.addAttribute("PatientTable", this.array);
         return "Homepage";
 	}
 	@GetMapping("/addPatient")

@@ -28,11 +28,12 @@ table, th, td {
 	    	<td id="number">Patient Name</td>
 	    	<td>Patient Age</td>
 	  		</tr>
-	  		<tr>
-	    	<td>John</td>
-	    	<td>14</td>
+	  		<tr th:each="patient:${PatientTable}">
+	  		<td th:text="${patient.name}"> </td>
+	  		<td th:text="${patient.age}"> </td>
 	  		</tr>
 			</table>
+			<h1 th:text = ${PatientTable.size()}></h1>
 		</div>
 	</body>
 </html>
