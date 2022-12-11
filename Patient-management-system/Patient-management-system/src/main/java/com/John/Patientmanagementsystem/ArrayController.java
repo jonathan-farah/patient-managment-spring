@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.apache.catalina.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,8 @@ public class ArrayController {
 	private ArrayList<Patient> array = new ArrayList<Patient>();
 	@GetMapping("/index")
 	public String welcome (Model model) {
+		Patient patient = new Patient();
+		model.addAttribute("patient",patient);
 		model.addAttribute("PatientTable", this.array);
         return "Homepage";
 	}

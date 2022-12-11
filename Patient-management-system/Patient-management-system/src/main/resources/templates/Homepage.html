@@ -35,5 +35,18 @@ table, th, td {
 			</table>
 			<h1 th:text = ${PatientTable.size()}></h1>
 		</div>
+		<div id = "table" style="position:relative; top:50px; left:800px; width:400px;">
+		<h1> This is where we ask for patients </h1>
+		<form action="#",th:action="@{/index}" method="post" th:object="${patient}">
+		<label>Name:</label> 
+		<input type="text" th:field = "*{name}"/><br/>		
+		<label>Age:</label> 
+		<input type="text" th:field = "*{name}"/><br/>		
+		<label>StartDate:</label> 
+		<input type="text" th:field = "*{name}"/><br/>	
+		<label>EndDate:</label> 
+		<input type="text" th:field = "*{name}"/><br/>		
+		</form>
+		</div>
 	</body>
 </html>

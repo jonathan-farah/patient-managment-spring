@@ -8,12 +8,12 @@ public class Patient {
 	private Date startDate;
 	private Date endDate;
 	//private Medicine medicine;
-	public Patient(int age, String name, Date startDate, Date endDate) {
-		this.age = age;
-		this.name = name;
-		this.startDate = startDate;
-		this.endDate = endDate; 
-	}
+//	public Patient(int age, String name, Date startDate, Date endDate) {
+//		this.age = age;
+//		this.name = name;
+//		this.startDate = startDate;
+//		this.endDate = endDate; 
+//	}
 	public int getAge() {
 		return age;
 	}
