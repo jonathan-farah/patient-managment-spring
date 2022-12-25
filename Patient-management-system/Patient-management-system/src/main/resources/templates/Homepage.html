@@ -4,6 +4,14 @@
 table, th, td {
   border:1px solid black;
 }
+label {
+        display: inline-block;
+        width: 100px;
+        margin: 5px;
+        text-align: left;
+} 
+   
+
 </style>
 	<head>
       <meta charset = "ISO-8859-1" />
@@ -38,14 +46,15 @@ table, th, td {
 		<div id = "table" style="position:relative; top:50px; left:800px; width:400px;">
 		<h1> This is where we ask for patients </h1>
 		<form action="#",th:action="@{/index}" method="post" th:object="${patient}">
-		<label>Name:</label> 
-		<input type="text" th:field = "*{name}"/><br/>		
-		<label>Age:</label> 
-		<input type="text" th:field = "*{name}"/><br/>		
-		<label>StartDate:</label> 
-		<input type="text" th:field = "*{name}"/><br/>	
-		<label>EndDate:</label> 
-		<input type="text" th:field = "*{name}"/><br/>		
+			<label>Name:</label> 
+			<input type="text" th:field = "*{name}"/>	
+			<label>Age:</label> 
+			<input type="text" th:field = "*{age}"/><br/>		
+			<label>StartDate:</label> 
+			<input type="text" th:field = "*{startDate}"/><br/>	
+			<label>EndDate:</label> 
+			<input type="text" th:field = "*{endDate}"/><br/>	
+			<button type="submit">Add Patient</button>
 		</form>
 		</div>
 	</body>
