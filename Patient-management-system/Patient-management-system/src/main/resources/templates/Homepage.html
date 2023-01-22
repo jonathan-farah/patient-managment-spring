@@ -4,6 +4,12 @@
 table, th, td {
   border:1px solid black;
 }
+label{
+        display: inline-block;
+        width: 100px;
+        margin: 5px;
+        text-align: left;
+      }
 </style>
 	<head>
       <meta charset = "ISO-8859-1" />
@@ -11,9 +17,11 @@ table, th, td {
       <title>Spring Boot Application</title>
 	</head>
 	<body>
+		<!-- separate page into blocks  -->
 		<div style="text-align:center; 
 		position:relative; 
 		top:100px;">
+		<!-- headings/titles -->
 		<h1> Welcome to The Patient Management System.</h1>
         <p style = "font-family:georgia,garamond,serif;
         font-size:16px;
@@ -21,11 +29,10 @@ table, th, td {
         How would you like to get started today?
 		</p> 
 		</div>
-		
 		<div id="table" style="position:relative; top:200px; left:100px; width:400px;">
 		<table style="width:100%">
 	  		<tr>
-	    	<td id="number">Patient Name</td>
+	    	<td id="number">Patient Name</td> 
 	    	<td>Patient Age</td>
 	  		</tr>
 	  		<tr th:each="patient:${PatientTable}">
@@ -33,7 +40,9 @@ table, th, td {
 	  		<td th:text="${patient.age}"> </td>
 	  		</tr>
 			</table>
-			<h1 th:text = ${PatientTable.size()}></h1>
+			<form th:action="@{/eraseArray}" method="get">
+    		<button type="submit">Delete</button>
+			</form>
 		</div>
 		<div id = "table" style="position:relative; top:50px; left:800px; width:400px;">
 		<h1> This is where we ask for patients </h1>
@@ -41,11 +50,12 @@ table, th, td {
 		<label>Name:</label> 
 		<input type="text" th:field = "*{name}"/><br/>		
 		<label>Age:</label> 
-		<input type="text" th:field = "*{name}"/><br/>		
+		<input type="text" th:field = "*{age}"/><br/>		
 		<label>StartDate:</label> 
-		<input type="text" th:field = "*{name}"/><br/>	
+		<input type="text" th:field = "*{startDate}"/><br/>	
 		<label>EndDate:</label> 
-		<input type="text" th:field = "*{name}"/><br/>		
+		<input type="text" th:field = "*{endDate}"/><br/>
+		<button type="submit">Submit</button>		
 		</form>
 		</div>
 	</body>
